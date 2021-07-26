@@ -11,8 +11,23 @@
 # Wireframe
 ![image](https://user-images.githubusercontent.com/15977970/127014287-e50d8273-bf36-4b2d-b7bb-2afb934a2f9b.png)
 
+# Technologies
+
+- Javasript
+  - To make a front end interect with programmed logic.
+
+- HTML
+  - To present the components on front
+
+- CSS
+  - To style the components in a presentable form for frontend
+
+- Canvas API
+   - To help draw 2D graphics via Javasript and HTML(game graphics)
+
 
 # Schedule
+
 * Monday - Setup project functions, class and components and basic html
 * Tuesday - Setup Splash page and complete
 * Wednesday - integrate UI component to js files
