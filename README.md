@@ -9,9 +9,10 @@
 
 
 # Wireframe
+![image](https://user-images.githubusercontent.com/15977970/127013481-f5b67423-fcd2-4b56-9dad-960e20cc6892.png)
 
 
-#Schedule
+# Schedule
 * Monday - Setup project functions, class and components and basic html
 * Tuesday - Setup Splash page and complete
 * Wednesday - integrate UI component to js files
