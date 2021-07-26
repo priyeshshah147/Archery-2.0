@@ -9,7 +9,7 @@
 
 
 # Wireframe
-![image](https://user-images.githubusercontent.com/15977970/127013481-f5b67423-fcd2-4b56-9dad-960e20cc6892.png)
+![image](https://user-images.githubusercontent.com/15977970/127014287-e50d8273-bf36-4b2d-b7bb-2afb934a2f9b.png)
 
 
 # Schedule
