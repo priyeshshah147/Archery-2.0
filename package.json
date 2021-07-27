@@ -1,0 +1,37 @@
+{
+  "name": "javasript_project",
+  "version": "1.0.0",
+  "description": "* Game controls will include Start, Stop and Reset button for user on the top right * On the right is an archery board that moves up and down and with increasing score it moves faster * On the top center displays three lives a user has. If user misses to hit the board a life is reduced * Left side is the archer position. User uses space bar to shoot and up and down error to move archer position * Left top corner is the score section and increases when shooter hits the moving board on the right * Board has different points with the center having most and sides having the least.",
+  "main": "index.js",
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priyeshshah147/Archery-2.0.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/priyeshshah147/Archery-2.0/issues"
+  },
+  "homepage": "https://github.com/priyeshshah147/Archery-2.0#readme",
+  "dependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.15.2",
+    "css-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.1.0",
+    "regenerator-runtime": "^0.13.9",
+    "sass": "^1.36.0",
+    "sass-loader": "^12.1.0",
+    "webpack": "^5.46.0",
+    "webpack-cli": "^4.7.2"
+  }
+}
