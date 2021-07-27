@@ -3,30 +3,36 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 // console.log(ctx);
 
+let stop = false;
 let x = 20;
-let y = canvas.height/2;
-let dx = 2;
+let y = (canvas.height+70)/2;
+let ay = (canvas.height+70)/2;
 let dy = 0;
-// let bdx = 0;
-let bdy = +1;
+let bdy = 2;
+let x2=20;
+let y2=(canvas.height+70)/2;
+let upPressed = false;
+let downPressed = false;
 
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
 
-function arrow(fromx, fromy, color){
-    let x = fromx; 
-    let y = fromy;
+function keyDownHandler(e) {
+    if(e.key == "Up" || e.key == "ArrowUp") {
+        upPressed = true;
+    }
+    else if(e.key == "Down" || e.key == "ArrowDown") {
+        downPressed = true;
+    }
+}
 
-    ctx.save();
-    ctx.beginPath();
-    ctx.moveTo(x,y);
-    ctx.lineTo(x+30, y);
-    ctx.lineTo(x+30, y-6);
-    ctx.lineTo(x+40, y+1);
-    ctx.lineTo(x+30, y+8);
-    ctx.lineTo(x+30, y+2);
-    ctx.lineTo(x, y+2);
-    // ctx.lineTo(10, 26);
-    ctx.fill();
-
+function keyUpHandler(e) {
+    if(e.key == "Up" || e.key == "ArrowUp") {
+        upPressed = false;
+    }
+    else if(e.key == "Down" || e.key == "ArrowDown") {
+        downPressed = false;
+    }
 }
 
 
@@ -38,6 +44,8 @@ function board(){
     ctx.beginPath()
     ctx.rect(canvas.width-boardWidth, boardY,  boardWidth, boardHeight);
     ctx.fillStyle = "white";
+    ctx.strokeSyle = "black";
+    ctx.stroke();
     ctx.fill();
     ctx.closePath();
 }
@@ -72,7 +80,7 @@ let board4Y = (canvas.height-board4Height)/2;
 
 function board4(){
     ctx.beginPath()
-    ctx.rect(canvas.width-board4Width-boardWidth*3, board4Y,  board4Width, board4Height);
+    ctx.rect(canvas.width-boardWidth*4, board4Y,  board4Width, board4Height);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
@@ -136,6 +144,49 @@ function drawHeart( fromx, fromy,lw,hlen,color) {
   
   }
 
+  function collisionDetection(){
+
+  }
+  
+function arrow(fromx, fromy, color){
+    let x = fromx; 
+    let y = fromy;
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.lineTo(x, y-4);
+    ctx.lineTo(x+10, y-4);
+    ctx.lineTo(x+15, y);
+    ctx.lineTo(x+70, y);
+    ctx.lineTo(x+70, y-4);
+    ctx.lineTo(x+80, y+1);
+    ctx.lineTo(x+70, y+6);
+    ctx.lineTo(x+70, y+2);
+    ctx.lineTo(x+15, y+2); 
+    ctx.lineTo(x+10, y+6);
+    ctx.lineTo(x, y+6);
+    ctx.lineTo(x+4, y+1)
+    ctx.lineTo(x,y-4)
+    ctx.fillStyle = color;
+    ctx.fill();
+
+}
+
+function bowArc(fromx, fromy ,color){
+    let x = fromx;
+    let y = fromy;
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(x, y, 50, -1.2, -1.6 * Math.PI);
+    ctx.lineTo(x+2, y);
+    ctx.arc(x, y, 50, -1.2, -1.6 * Math.PI);
+    ctx.stroke();
+}
+
+
+
+
+
 
 function draw(){
     
@@ -143,7 +194,7 @@ function draw(){
     drawHeart( 385, 15, 50, 50, "red");
     drawHeart( 450, 15, 50, 50, "red");
     drawHeart( 515, 15, 50, 50, "red");
-    arrow(x, y, "red");
+
     board();
     boardY += bdy;
     if(boardY + boardHeight + bdy > canvas.height || boardY -70  + bdy < 0) {
@@ -169,8 +220,30 @@ function draw(){
     if(board5Y + board5Height + bdy > canvas.height || board5Y -70  + bdy < 0) {
         bdy = -bdy;
     }
-    x += dx; 
-    y += dy;
+
+    arrow(x, y, "yellow");
+    document.addEventListener('keyup', event => {
+        if (event.code === 'Space') {
+          dx=5;
+            stop = true;
+        }
+      })
+    if(upPressed && !stop) {
+        if(y>=120  ){
+            y -= 2;
+            y2-=2;
+        }
+    }
+    else if(downPressed  && !stop ) {
+        if(y<=canvas.height-50){
+            y += 2;
+            y2+=2;
+        }
+    }
+
+    bowArc(x2,y2);      
+     x += dx;
+     y += dy;
     
 }
 setInterval(draw, 10);

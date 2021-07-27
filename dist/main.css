@@ -9,6 +9,7 @@
 }
 
 #canvas {
+  border-radius: 10px;
   display: block;
   margin: auto;
   flex-direction: row;
