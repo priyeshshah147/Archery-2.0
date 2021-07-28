@@ -13,6 +13,7 @@ let x2=20;
 let y2=(canvas.height+70)/2;
 let upPressed = false;
 let downPressed = false;
+let score = 0;
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -184,6 +185,12 @@ function bowArc(fromx, fromy ,color){
 }
 
 
+function drawScore(){
+    ctx.font= "35px Arial";
+    ctx.fillStyle = "Red";
+    ctx.fillText("score:" + score, 20, 60) 
+}
+
 
 
 
@@ -194,34 +201,34 @@ function draw(){
     drawHeart( 385, 15, 50, 50, "red");
     drawHeart( 450, 15, 50, 50, "red");
     drawHeart( 515, 15, 50, 50, "red");
-
+    drawScore();
     board();
-    boardY += bdy;
-    if(boardY + boardHeight + bdy > canvas.height || boardY -70  + bdy < 0) {
-        bdy = -bdy;
-    }
+    // boardY += bdy;
+    // if(boardY + boardHeight + bdy > canvas.height || boardY -70  + bdy < 0) {
+    //     bdy = -bdy;
+    // }
     board2()
-    board2Y += bdy;
-    if(board2Y + board2Height + bdy > canvas.height || board2Y -70  + bdy < 0) {
-        bdy = -bdy;
-    }
+    // board2Y += bdy;
+    // if(board2Y + board2Height + bdy > canvas.height || board2Y -70  + bdy < 0) {
+    //     bdy = -bdy;
+    // }
     board3()
-    board3Y += bdy;
-    if(board3Y + board3Height + bdy > canvas.height || board3Y -70  + bdy < 0) {
-        bdy = -bdy;
-    }
+    // board3Y += bdy;
+    // if(board3Y + board3Height + bdy > canvas.height || board3Y -70  + bdy < 0) {
+    //     bdy = -bdy;
+    // }
     board4()
-    board4Y += bdy;
-    if(board4Y + board4Height + bdy > canvas.height || board4Y -70  + bdy < 0) {
-        bdy = -bdy;
-    }
+    // board4Y += bdy;
+    // if(board4Y + board4Height + bdy > canvas.height || board4Y -70  + bdy < 0) {
+    //     bdy = -bdy;
+    // }
     board5()
-    board5Y += bdy;
-    if(board5Y + board5Height + bdy > canvas.height || board5Y -70  + bdy < 0) {
-        bdy = -bdy;
-    }
+    // board5Y += bdy;
+    // if(board5Y + board5Height + bdy > canvas.height || board5Y -70  + bdy < 0) {
+    //     bdy = -bdy;
+    // }
 
-    arrow(x, y, "yellow");
+    arrow(x, y, "brown");
     document.addEventListener('keyup', event => {
         if (event.code === 'Space') {
           dx=5;
@@ -230,20 +237,47 @@ function draw(){
       })
     if(upPressed && !stop) {
         if(y>=120  ){
-            y -= 2;
-            y2-=2;
+            y -= 1;
+            y2-=1;
         }
     }
     else if(downPressed  && !stop ) {
         if(y<=canvas.height-50){
-            y += 2;
-            y2+=2;
+            y += 1;
+            y2+=1;
         }
     }
 
     bowArc(x2,y2);      
      x += dx;
      y += dy;
+
+    if(x+80===canvas.width-boardWidth*5 && y<=board5Height+board5Y && y>=board5Y){
+    dx=0
+        score =5
+        // dy=bdy
+        
+    }else if(x+80===canvas.width-boardWidth*4 && y<=board4Height+board4Y && y>=board4Y){
+    dx=0
+        score =4
+        // dy=bdy
+        
+    }else if(x+80===canvas.width-boardWidth*3 && y<=board3Height+board3Y && y>=board3Y){
+    dx=0
+        score =3
+        // dy=bdy
+            
+    }else if(x+80===canvas.width-boardWidth*2 && y<=board2Height+board2Y && y>=board2Y){
+    dx=0
+        score =2
+        // dy=bdy
+        
+    }else if(x+80===canvas.width-boardWidth && y<=boardHeight+boardY && y>=boardY){
+    dx=0
+        score =1 
+        // dy=bdy
+        
+    }
     
 }
 setInterval(draw, 10);
