@@ -1,6 +1,6 @@
 // const canvas = document.getElementById('canvas');
 // const ctx = canvas.getContext('2d');
-function drawHeart(ctx, fromx, fromy, tox, toy,lw,hlen,color) {
+export function drawHeart(ctx, fromx, fromy,lw,hlen,color) {
 
     var x = fromx;
     var y = fromy;
@@ -46,4 +46,10 @@ function drawHeart(ctx, fromx, fromy, tox, toy,lw,hlen,color) {
   
   }
 
-//   module.exports = drawHeart;
+
+export function displayHearts (ctx, heartCount) {
+  for(let i=0; i<heartCount; i++){
+    let j = i * 65 + 400
+    drawHeart(ctx, j, 15, 50, 50, "red")
+  }
+}
