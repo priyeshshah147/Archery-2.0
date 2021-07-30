@@ -1,5 +1,5 @@
 export function board(ctx,boardX, boardY, boardWidth, boardHeight, color){
-    ctx.beginPath()
+    ctx.beginPath();
     ctx.rect(boardX, boardY,  boardWidth, boardHeight);
     ctx.fillStyle = color;
     ctx.fill();
@@ -12,15 +12,3 @@ export function board(ctx,boardX, boardY, boardWidth, boardHeight, color){
 // export function board4() { board(ctx, canvas.width-45, (canvas.height-60+70)/2, 10, 60, "red" )}
 // export function board5() { board(ctx, canvas.width-55, (canvas.height-30+70)/2, 10, 30, "yellow" )}
 
-// class Board {
-//     constructor(ctx, canvas){
-//         this.ctx = ctx;
-//         this.canvas = canvas;
-//     }
-
-//     buildBoard(){
-
-//     }
-
-// }
-//  export default Board;

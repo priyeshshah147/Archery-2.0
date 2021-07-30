@@ -1,5 +1,3 @@
-// const canvas = document.getElementById('canvas');
-// const ctx = canvas.getContext('2d');
 export function drawHeart(ctx, fromx, fromy,lw,hlen,color) {
 
     var x = fromx;
