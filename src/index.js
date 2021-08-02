@@ -142,7 +142,7 @@ function draw(){
 
     document.addEventListener('keyup', event => {
         if (event.code === 'Space') {
-          dx=10;
+          dx=20;
           stop = true;
         }
     })
@@ -169,83 +169,133 @@ function draw(){
 
     if(score>= 10 && Math.abs(bdy)<2 ){
         bdy = 2;
-    }else if (score>= 20 && Math.abs(bdy)<4 ){
-        bdy = 4;
-    }
 
-    board();
-    boardY += bdy;
-    if(boardY + boardHeight + bdy > canvas.height || boardY -70  + bdy < 0) {
-        bdy = -bdy;
-    }
-    board2()
-    board2Y += bdy;
-    if(board2Y + board2Height + bdy > canvas.height || board2Y -70  + bdy < 0) {
-        bdy = -bdy;
-    }
-    board3()
-    board3Y += bdy;
-    if(board3Y + board3Height + bdy > canvas.height || board3Y -70  + bdy < 0) {
-        bdy = -bdy;
-    }
-    board4()
-    board4Y += bdy;
-    if(board4Y + board4Height + bdy > canvas.height || board4Y -70  + bdy < 0) {
-        bdy = -bdy;
-    }
-    board5()
-    board5Y += bdy;
-    if(board5Y + board5Height + bdy > canvas.height || board5Y -70  + bdy < 0) {
-        bdy = -bdy;
-    }
+    } 
+    else if (score>=20 && Math.abs(bdy)<3){
+      
+        board3()
+        board3Y += bdy;
+        if(board3Y + board3Height + bdy > canvas.height || board3Y -70  + bdy < 0) {
+            bdy = -bdy;
+        }
+        board4()
+        board4Y += bdy;
+        if(board4Y + board4Height + bdy > canvas.height || board4Y -70  + bdy < 0) {
+            bdy = -bdy;
+        }
+        board5()
+        board5Y += bdy;
+        if(board5Y + board5Height + bdy > canvas.height || board5Y -70  + bdy < 0) {
+            bdy = -bdy;
+        }
 
 
 
-         
-
-
-    if(ax+70===canvas.width-boardWidth*5 && ay<=board5Height+board5Y && ay>=board5Y){
-        dx=0    
-        score +=5;
-        ax = 20;
-        stop=false;
-        
-    }else if(ax+70===canvas.width-boardWidth*4 && ay<=board4Height+board4Y && ay>=board4Y){
-        dx=0       
-        score +=4;
-        ax = 20;
-        stop=false;
-
-        
-    }else if(ax+70===canvas.width-boardWidth*3 && ay<=board3Height+board3Y && ay>=board3Y){
-        dx=0
-        score +=3;
-        ax = 20;
-        stop=false;
             
-    }else if(ax+70===canvas.width-boardWidth*2 && ay<=board2Height+board2Y && ay>=board2Y){
-        dx=0
-        score +=2;
-        stop=false;
-        ax = 20;
-    
+
+
+        if(ax+70===canvas.width-boardWidth*5 && ay<=board5Height+board5Y && ay>=board5Y){
+            dx=0    
+            score +=5;
+            ax = 20;
+            stop=false;
+            
+        }else if(ax+70===canvas.width-boardWidth*4 && ay<=board4Height+board4Y && ay>=board4Y){
+            dx=0       
+            score +=4;
+            ax = 20;
+            stop=false;
+
+            
+        }else if(ax+70===canvas.width-boardWidth*3 && ay<=board3Height+board3Y && ay>=board3Y){
+            dx=0
+            score +=3;
+            ax = 20;
+            stop=false;
+                
+        }
     }
-    else if(ax+70===canvas.width-15 && ay<=boardHeight+boardY && ay>=boardY){
-        dx=0
-        score +=1 ;
-        stop=false;
-        ax = 20;
-    
+    else if(score>= 30 && Math.abs(bdy)<4 ){
+        bdy = 3;
+
+    } 
+
+    else{
+
+        board();
+        boardY += bdy;
+        if(boardY + boardHeight + bdy > canvas.height || boardY -70  + bdy < 0) {
+            bdy = -bdy;
+        }
+        board2()
+        board2Y += bdy;
+        if(board2Y + board2Height + bdy > canvas.height || board2Y -70  + bdy < 0) {
+            bdy = -bdy;
+        }
+        board3()
+        board3Y += bdy;
+        if(board3Y + board3Height + bdy > canvas.height || board3Y -70  + bdy < 0) {
+            bdy = -bdy;
+        }
+        board4()
+        board4Y += bdy;
+        if(board4Y + board4Height + bdy > canvas.height || board4Y -70  + bdy < 0) {
+            bdy = -bdy;
+        }
+        board5()
+        board5Y += bdy;
+        if(board5Y + board5Height + bdy > canvas.height || board5Y -70  + bdy < 0) {
+            bdy = -bdy;
+        }
+
+
+
+            
+
+
+        if(ax+70===canvas.width-boardWidth*5 && ay<=board5Height+board5Y && ay>=board5Y){
+            dx=0    
+            score +=5;
+            ax = 20;
+            stop=false;
+            
+        }else if(ax+70===canvas.width-boardWidth*4 && ay<=board4Height+board4Y && ay>=board4Y){
+            dx=0       
+            score +=4;
+            ax = 20;
+            stop=false;
+
+            
+        }else if(ax+70===canvas.width-boardWidth*3 && ay<=board3Height+board3Y && ay>=board3Y){
+            dx=0
+            score +=3;
+            ax = 20;
+            stop=false;
+                
+        }else if(ax+70===canvas.width-boardWidth*2 && ay<=board2Height+board2Y && ay>=board2Y){
+            dx=0
+            score +=2;
+            stop=false;
+            ax = 20;
         
+        }
+        else if(ax+70===canvas.width-15 && ay<=boardHeight+boardY && ay>=boardY){
+            dx=0
+            score +=1 ;
+            stop=false;
+            ax = 20;
+        
+            
+        }
     }
-    else  if (ax >= canvas.width){
+     if (ax >= canvas.width){
         heartCount -= 1;
         stop= false;
         ax=20;
         dx=0;  
     }
     if (!ending){
-        requestAnimationFrame(draw);
+        requestAnimationFrame(draw, 1);
     }
 
 }
