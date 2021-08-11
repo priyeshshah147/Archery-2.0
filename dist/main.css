@@ -13,19 +13,28 @@
   font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
+.body2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.canvas-front {
+  display: inline-flex;
+  border-radius: 10px;
+  background-color: rgba(173, 216, 230, 0.95);
+  margin: 20px;
+}
+
 .manual {
   border-radius: 10px;
-  display: block;
-  margin: auto;
   padding-left: 20px;
   padding-right: 20px;
   height: 600px;
-  width: fit-content;
+  width: auto;
   background-color: lightblue;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 200px;
+  margin: 20px;
 }
 
 .yellow, .red, .blue, .black, .white, .dir {
@@ -38,21 +47,6 @@ h2 {
   font-size: 35px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #022668;
-}
-
-#canvas {
-  border-radius: 10px;
-  display: block;
-  margin: auto;
-  width: 900px;
-  height: 600px;
-  flex-direction: row;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: lightblue;
 }
 
 body {

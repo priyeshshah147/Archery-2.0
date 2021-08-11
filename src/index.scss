@@ -1,9 +1,4 @@
-// *{
-//     margin: 0;
-//     padding: 0;
-//     box-sizing: border-box;
-//     background-color: lightcyan;
-// }
+
 
 .title{
     margin-top: 40px;
@@ -17,20 +12,30 @@
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.body2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.canvas-front{
+    display: inline-flex;
+    border-radius: 10px; 
+    background-color: rgba(173, 216, 230, 0.95);   
+    margin:20px;   
+}
+
 .manual{
     border-radius: 10px;
-    display: block;
-    margin:auto;
     padding-left: 20px;
     padding-right: 20px;
     height: 600px;
-    width: fit-content;
+    width: auto;
     background-color: lightblue;
-    // flex-direction: column-reverse;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 200px;
+    margin:20px; 
+   
 }
 
 .yellow, .red, .blue, .black, .white, .dir{
@@ -39,11 +44,7 @@
     margin-bottom: 3px;
 }
 
-// .dir{
-//     font-size: 30px;
-//     font-family:Verdana, Geneva, Tahoma, sans-serif;
 
-// }
 
 h2{
     font-size: 35px;
@@ -52,31 +53,14 @@ h2{
 }
 
 
-#canvas{
-    border-radius: 10px; 
-    display: block; 
-    margin: auto;
-    width: 900px;
-    height: 600px;
-    flex-direction: row;
-    position: absolute;
-    top:0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: lightblue;
-    // background-color: rgba(180, 255, 180, 0.9) ;
-    // box-shadow: 0 10px 10px rgb(3 3 3 / 0.2);
- 
-
-    
-}
 
 body {
     // background-image: linear-gradient(to right, teal, lightblue);
     background-image: url('../src/styles/yeah22.jpg');
     background-size:cover;
-}    
+} 
+
+
 
 
 .yellow{
