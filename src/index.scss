@@ -12,11 +12,25 @@
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.body3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:auto;
+
+}
+
 .body2{
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.personal-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
 }
 
@@ -50,6 +64,18 @@ h2{
     font-size: 35px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(2, 38, 104);
+}
+
+
+
+a {
+    font-size: 30px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: rgb(2, 38, 104);
+    text-decoration: none;
+    margin-left: 80px;
+    margin-right: 80px;
 }
 
 
