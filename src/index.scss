@@ -35,7 +35,6 @@
 }
 
 .canvas-front{
-    display: inline-flex;
     border-radius: 10px; 
     background-color: rgba(173, 216, 230, 0.95);   
     margin:20px;   
@@ -76,6 +75,11 @@ a {
     text-decoration: none;
     margin-left: 80px;
     margin-right: 80px;
+    color: rgb(2, 38, 104);
+    padding: 10px;
+    border-radius: 30px;
+    background-color: lightblue;
+    
 }
 
 
