@@ -33,3 +33,6 @@
 * Wednesday - integrate UI component to js files
 * Thursday - Polish Css, add readme, about page
 
+
+# Play here
+https://priyeshshah147.github.io/Archery-2.0/
