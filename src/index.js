@@ -1,4 +1,4 @@
-//  
+document.addEventListener("DOMContentLoaded", () => { 
 const {displayHearts} = require("./scripts/hearts")
 const {arrow} = require('./scripts/arrow')
 const {bow} = require('./scripts/bow')
@@ -65,13 +65,12 @@ function keyUpHandler(e) {
 }
 
 
-let boardWidth = 10;
-let boardHeight = 160;
-let boardY = (canvas.height-boardHeight+70)/2;
+
+let boardY = (canvas.height-160+70)/2;
 
 function board(){
     ctx.beginPath()
-    ctx.rect(canvas.width-boardWidth, boardY,  boardWidth, boardHeight);
+    ctx.rect(canvas.width-10, boardY,  10, 160);
     ctx.fillStyle = "white";
     ctx.strokeSyle = "black";
     ctx.stroke();
@@ -80,49 +79,43 @@ function board(){
 }
 
 
-let board2Width = 10;
-let board2Height = 128;
-let board2Y = (canvas.height-board2Height+70)/2;
+let board2Y = (canvas.height-128+70)/2;
 
 function board2(){
     ctx.beginPath()
-    ctx.rect(canvas.width-board2Width*2, board2Y,  board2Width, board2Height);
+    ctx.rect(canvas.width-20, board2Y,  10, 128);
     ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
 }
 
-let board3Width = 10;
-let board3Height = 96;
-let board3Y = (canvas.height-board3Height+70)/2;
+let board3Y = (canvas.height-96+70)/2;
 
 function board3(){
     ctx.beginPath()
-    ctx.rect(canvas.width-board3Width-boardWidth-board2Width, board3Y,  board3Width, board3Height);
+    ctx.rect(canvas.width-30, board3Y,  10, 96);
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
 }
 
-let board4Width = 10;
-let board4Height = 64;
-let board4Y = (canvas.height-board4Height+70)/2;
+
+let board4Y = (canvas.height-64+70)/2;
 
 function board4(){
     ctx.beginPath()
-    ctx.rect(canvas.width-boardWidth*4, board4Y,  board4Width, board4Height);
+    ctx.rect(canvas.width-40, board4Y,  10, 64);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
 }
 
-let board5Width = 10;
-let board5Height = 32;
-let board5Y = (canvas.height-board5Height+70)/2;
+
+let board5Y = (canvas.height-32+70)/2;
 
 function board5(){
     ctx.beginPath()
-    ctx.rect(canvas.width-boardWidth*5, board5Y,  board5Width, board5Height);
+    ctx.rect(canvas.width-50, board5Y,  10, 32);
     ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
@@ -130,7 +123,6 @@ function board5(){
  
 
 function draw(){
-
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     displayHearts(ctx, heartCount)
@@ -139,18 +131,15 @@ function draw(){
     arrow(ctx, ax, ay, "brown");
     handleGameStatus();
     
-
     ax += dx;
     ay += dy;
 
-    window.addEventListener('keyup', event => {
+    document.addEventListener('keyup', event => {
         if (event.code === 'Space') {
           dx=20;
           stop = true;
         }
     })
-
- 
      
     if(upPressed && !stop) {
         if(ay>=120  ){
@@ -164,151 +153,115 @@ function draw(){
             y2+=1;
         }
     }
-    
-
 
     if (heartCount ===0) {
         gameOver=true
     }
 
-    if(score>= 10  && Math.abs(bdy)<2){
-        bdy = 2;
-        // board()
 
-    } 
-    if(score>= 20  && Math.abs(bdy)<4){
-        bdy = 4;
-
-    } 
-    // if(score>= 20  && Math.abs(bdy)<7){
-    //     bdy = 7;
-
-    // } 
-    else if (score>=30 && Math.abs(bdy)<5){
-        
-        board3()
-        board3Y += bdy;
-        if(board3Y + board3Height + bdy > canvas.height || board3Y -70  + bdy < 0) {
-            bdy = -bdy;
-        }
-        board4()
-        board4Y += bdy;
-        if(board4Y + board4Height + bdy > canvas.height || board4Y -70  + bdy < 0) {
-            bdy = -bdy;
-        }
+    if(score>=40 && Math.abs(bdy)<7 ){  
         board5()
         board5Y += bdy;
-        if(board5Y + board5Height + bdy > canvas.height || board5Y -70  + bdy < 0) {
+        if(board5Y + 16 + 80 + bdy >= canvas.height || board5Y - 64 - 70  + bdy <= 0) {
             bdy = -bdy;
         }
-
-
-        if(ax+70===canvas.width-boardWidth*5 && ay<=board5Height+board5Y && ay>=board5Y){
+        if(ax+70===canvas.width-50 && ay<=32+board5Y && ay>=board5Y){
             dx=0    
             score +=5;
             ax = 20;
             stop=false;
-            
-        }else if(ax+70===canvas.width-boardWidth*4 && ay<=board4Height+board4Y && ay>=board4Y){
+        } 
+    }
+ 
+    else if(score>= 30  && Math.abs(bdy)<7){
+        board3();
+        board3Y += bdy;
+        board4()
+        board4Y += bdy;
+        board5()
+        board5Y += bdy;
+        if(board5Y + 16 + 80 + bdy >= canvas.height || board5Y - 64 - 70  + bdy <= 0) {
+            bdy = -bdy;
+        }
+        if(ax+70===canvas.width-50 && ay<=32+board5Y && ay>=board5Y){
+            dx=0    
+            score +=5;
+            ax = 20;
+            stop=false;
+        } 
+        if(ax+70===canvas.width-30 && ay<=64+board4Y && ay>=board4Y){
             dx=0       
             score +=4;
             ax = 20;
-            stop=false;
-
-            
-        }else if(ax+70===canvas.width-boardWidth*3 && ay<=board3Height+board3Y && ay>=board3Y){
+            stop=false;        
+        }
+        if(ax+70===canvas.width-30 && ay<=96+board3Y && ay>=board3Y){
             dx=0
             score +=3;
             ax = 20;
             stop=false;
                 
-        }
+        }  
+    }    
+    else if(score>= 20  && Math.abs(bdy)<6){
+        bdy = 6;
+        
     }
-    else if(score>= 30 && Math.abs(bdy)<3  ){
-        board5()
-        board5Y += bdy;
-        if(board5Y + board5Height + bdy > canvas.height || board5Y -70  + bdy < 0) {
-            bdy = -bdy;
-        }
-        if(ax+70===canvas.width-boardWidth*3 && ay<=board3Height+board3Y && ay>=board3Y){
-            dx=0
-            score +=3;
-            ax = 20;
-            stop=false;
-                
-        }
+    else if(score>= 10  && Math.abs(bdy)<3){
+        bdy = 3;
 
     } 
+
 
     else{
-
         board();
         boardY += bdy;
-        if(boardY + boardHeight + bdy > canvas.height || boardY -70  + bdy < 0) {
-            bdy = -bdy;
-        }
-        board2()
+        board2(); 
         board2Y += bdy;
-        if(board2Y + board2Height + bdy > canvas.height || board2Y -70  + bdy < 0) {
-            bdy = -bdy;
-        }
-        board3()
+        board3();
         board3Y += bdy;
-        if(board3Y + board3Height + bdy > canvas.height || board3Y -70  + bdy < 0) {
-            bdy = -bdy;
-        }
         board4()
         board4Y += bdy;
-        if(board4Y + board4Height + bdy > canvas.height || board4Y -70  + bdy < 0) {
-            bdy = -bdy;
-        }
         board5()
         board5Y += bdy;
-        if(board5Y + board5Height + bdy > canvas.height || board5Y -70  + bdy < 0) {
+        if(board5Y + 16 + 80 + bdy >= canvas.height || board5Y - 64 - 70  + bdy <= 0) {
             bdy = -bdy;
         }
-
-
-
-            
-
-
-        if(ax+70===canvas.width-boardWidth*5 && ay<=board5Height+board5Y && ay>=board5Y){
+        if(ax+70===canvas.width-50 && ay<=32+board5Y && ay>=board5Y){
             dx=0    
             score +=5;
             ax = 20;
             stop=false;
-            
-        }else if(ax+70===canvas.width-boardWidth*4 && ay<=board4Height+board4Y && ay>=board4Y){
+        } 
+        if(ax+70===canvas.width-30 && ay<=64+board4Y && ay>=board4Y){
             dx=0       
             score +=4;
             ax = 20;
-            stop=false;
-
-            
-        }else if(ax+70===canvas.width-boardWidth*3 && ay<=board3Height+board3Y && ay>=board3Y){
+            stop=false;        
+        }
+        if(ax+70===canvas.width-30 && ay<=96+board3Y && ay>=board3Y){
             dx=0
             score +=3;
             ax = 20;
             stop=false;
                 
-        }else if(ax+70===canvas.width-boardWidth*2 && ay<=board2Height+board2Y && ay>=board2Y){
+        } 
+        if(ax+70===canvas.width-10 && ay<=128+board2Y && ay>=board2Y){
             dx=0
             score +=2;
-            stop=false;
             ax = 20;
+            stop=false;
         
-        }
-        else if(ax+70===canvas.width-10 && ay<=boardHeight+boardY && ay>=boardY){
+        } 
+        if(ax+70===canvas.width-10 && ay<=160+boardY && ay>=boardY){
             dx=0
             score +=1 ;
             stop=false;
-            ax = 20;
-        
-            
+            ax = 20;  
         }
+
     }
-     if (ax >= canvas.width){
+    if (ax >= canvas.width){
         heartCount -= 1;
         stop= false;
         ax=20;
@@ -322,4 +275,4 @@ function draw(){
 
 
 draw();
-// });
+}); 
