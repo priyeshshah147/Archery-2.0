@@ -97,6 +97,7 @@ function board3(){
     ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
+    
 }
 
 
