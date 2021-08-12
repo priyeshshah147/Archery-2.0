@@ -1,10 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => { 
+//  
 const {displayHearts} = require("./scripts/hearts")
 const {arrow} = require('./scripts/arrow')
 const {bow} = require('./scripts/bow')
 const { drawScore } = require("./scripts/drawScore")
-const {instructions, instructions2, instructions3} = require('./scripts/instructions')
-
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -29,6 +27,11 @@ let ending = false
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener('keyup', event, false);
+window.addEventListener("keydown", function(e) {
+    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+}, false);
 
 function handleGameStatus(){
     if (gameOver){
@@ -135,17 +138,18 @@ function draw(){
     drawScore(ctx, score);
     arrow(ctx, ax, ay, "brown");
     handleGameStatus();
-    // instructions(ctx);
+    
 
     ax += dx;
     ay += dy;
 
-    document.addEventListener('keyup', event => {
+    window.addEventListener('keyup', event => {
         if (event.code === 'Space') {
           dx=20;
           stop = true;
         }
     })
+
  
      
     if(upPressed && !stop) {
@@ -167,12 +171,21 @@ function draw(){
         gameOver=true
     }
 
-    if(score>= 10 && Math.abs(bdy)<2 ){
+    if(score>= 10  && Math.abs(bdy)<2){
         bdy = 2;
+        // board()
 
     } 
-    else if (score>=20 && Math.abs(bdy)<3){
-      
+    if(score>= 20  && Math.abs(bdy)<4){
+        bdy = 4;
+
+    } 
+    // if(score>= 20  && Math.abs(bdy)<7){
+    //     bdy = 7;
+
+    // } 
+    else if (score>=30 && Math.abs(bdy)<5){
+        
         board3()
         board3Y += bdy;
         if(board3Y + board3Height + bdy > canvas.height || board3Y -70  + bdy < 0) {
@@ -188,10 +201,6 @@ function draw(){
         if(board5Y + board5Height + bdy > canvas.height || board5Y -70  + bdy < 0) {
             bdy = -bdy;
         }
-
-
-
-            
 
 
         if(ax+70===canvas.width-boardWidth*5 && ay<=board5Height+board5Y && ay>=board5Y){
@@ -215,8 +224,19 @@ function draw(){
                 
         }
     }
-    else if(score>= 30 && Math.abs(bdy)<4 ){
-        bdy = 3;
+    else if(score>= 30 && Math.abs(bdy)<3  ){
+        board5()
+        board5Y += bdy;
+        if(board5Y + board5Height + bdy > canvas.height || board5Y -70  + bdy < 0) {
+            bdy = -bdy;
+        }
+        if(ax+70===canvas.width-boardWidth*3 && ay<=board3Height+board3Y && ay>=board3Y){
+            dx=0
+            score +=3;
+            ax = 20;
+            stop=false;
+                
+        }
 
     } 
 
@@ -279,7 +299,7 @@ function draw(){
             ax = 20;
         
         }
-        else if(ax+70===canvas.width-15 && ay<=boardHeight+boardY && ay>=boardY){
+        else if(ax+70===canvas.width-10 && ay<=boardHeight+boardY && ay>=boardY){
             dx=0
             score +=1 ;
             stop=false;
@@ -302,4 +322,4 @@ function draw(){
 
 
 draw();
-});
+// });

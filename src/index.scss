@@ -26,20 +26,24 @@
 }
 
 .canvas-front{
-    border-radius: 10px; 
-    background-color: rgba(173, 216, 230, 0.95);   
-    margin:20px;   
+    border-radius: 10px;
+    background-color: lightgreen;  
+    margin:20px;  
+    border: solid black 1px; 
 }
 
 .manual{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     border-radius: 10px;
     padding-left: 20px;
     padding-right: 20px;
     height: 600px;
     width: auto;
-    background-color: lightblue;
+    background-color: lightgreen;
     margin:20px; 
-   
+    border: solid black 1px;
 }
 
 .yellow, .red, .blue, .black, .white, .dir{
@@ -50,26 +54,23 @@
 
 
 h2{
-    font-size: 35px;
+    font-size: 30px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(2, 38, 104);
 }
 
 
 a {
-    font-size: 30px;
+    font-size: 25px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     color: rgb(2, 38, 104);
     text-decoration: none;
-    margin-left: 80px;
-    margin-right: 80px;
     color: rgb(2, 38, 104);
-    padding: 10px;
-    border-radius: 30px;
-    background-color: lightblue;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top:20px;
+    
 }
 
 
