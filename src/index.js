@@ -1,4 +1,4 @@
-// document.addEventListener("DOMContentLoaded", () => { 
+document.addEventListener("DOMContentLoaded", () => { 
 const {displayHearts} = require("./scripts/hearts")
 const {arrow} = require('./scripts/arrow')
 const {bow} = require('./scripts/bow')
@@ -292,4 +292,4 @@ function draw(){
 
 
 draw();
-// }); 
+}); 
