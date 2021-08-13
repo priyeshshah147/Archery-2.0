@@ -10,18 +10,18 @@ const ctx = canvas.getContext('2d');
 let heartCount = 3;
 let stop = false;
 let ax = 20;
-let y = (canvas.height+70)/2;
-let ay = (canvas.height+70)/2;
+let ay = 150;
 let dy = 0;
 let dx = 0;
 let bdy = 0;
 let x2=20;
-let y2=(canvas.height+70)/2;
+let y2= 150;
 let upPressed = false;
 let downPressed = false;
 let score = 0;
 let gameOver = false;
-let ending = false
+let youWin = false;
+let ending = false;
 
 
 document.addEventListener("keydown", keyDownHandler, false);
@@ -35,13 +35,24 @@ window.addEventListener("keydown", function(e) {
 
 function handleGameStatus(){
     if (gameOver){
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'brown';
         ctx.font = '90px Tahoma';
         ctx.fillText('GAME OVER', 200, 300);
-        ctx.fillStyle = 'Black';
+        ctx.fillStyle = 'brown';
         ctx.font = '40px Orbitron';
-        ctx.fillText('Your Score is:'+ " " +score, 345, 400); 
+        ctx.fillText('Your Score is:'+ " " +score, 300, 370); 
         ending = true;           
+    }
+}
+function handleGameStatus2(){
+    if (youWin){
+        ctx.fillStyle = 'brown';
+        ctx.font = '70px Orbitron';
+        ctx.fillText('Congratulation', 250, 200); 
+        ctx.fillStyle = 'brown';
+        ctx.font = '120px Tahoma';
+        ctx.fillText('You win!!!', 200, 350);
+        ending =true;           
     }
 }
 
@@ -131,6 +142,8 @@ function draw(){
     drawScore(ctx, score);
     arrow(ctx, ax, ay, "brown");
     handleGameStatus();
+    handleGameStatus2();
+    
     
     ax += dx;
     ay += dy;
@@ -144,21 +157,24 @@ function draw(){
      
     if(upPressed && !stop) {
         if(ay>=120  ){
-            ay -= 1;
-            y2-=1;
+            ay -= 5;
+            y2-=5;
         }
     }
     else if(downPressed  && !stop ) {
         if(ay<=canvas.height-50){
-            ay += 1;
-            y2+=1;
+            ay += 5;
+            y2+=5;
         }
     }
 
     if (heartCount ===0) {
         gameOver=true
     }
-
+    
+    if (score >= 50){
+        youWin = true
+    }
 
     if(score>=40 && Math.abs(bdy)<7 ){  
         board5()
@@ -268,7 +284,7 @@ function draw(){
         ax=20;
         dx=0;  
     }
-    if (!ending){
+    if (!ending ){
         requestAnimationFrame(draw, 1);
     }
 
