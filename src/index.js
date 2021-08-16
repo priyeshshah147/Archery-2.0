@@ -1,8 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => { 
+// document.addEventListener("DOMContentLoaded", () => { 
 const {displayHearts} = require("./scripts/hearts")
 const {arrow} = require('./scripts/arrow')
 const {bow} = require('./scripts/bow')
-const { drawScore, drawLevel } = require("./scripts/drawScore")
+const { drawScore } = require("./scripts/drawScore")
+const { drawLevel } = require("./scripts/drawlevel")
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -297,4 +298,4 @@ function draw(){
 
 
 draw();
-}); 
+// }); 
