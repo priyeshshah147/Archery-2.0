@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const {displayHearts} = require("./scripts/hearts")
 const {arrow} = require('./scripts/arrow')
 const {bow} = require('./scripts/bow')
-const { drawScore } = require("./scripts/drawScore")
+const { drawScore, drawLevel } = require("./scripts/drawScore")
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -19,6 +19,7 @@ let y2= 150;
 let upPressed = false;
 let downPressed = false;
 let score = 0;
+let level = 1;
 let gameOver = false;
 let youWin = false;
 let ending = false;
@@ -140,6 +141,7 @@ function draw(){
     displayHearts(ctx, heartCount)
     bow(ctx,x2,y2); 
     drawScore(ctx, score);
+    drawLevel(ctx, level);
     arrow(ctx, ax, ay, "brown");
     handleGameStatus();
     handleGameStatus2();
@@ -176,7 +178,8 @@ function draw(){
         youWin = true
     }
 
-    if(score>=40 && Math.abs(bdy)<7 ){  
+    if(score>=40 && Math.abs(bdy)<7 ){
+        level = 5;  
         board5()
         board5Y += bdy;
         if(board5Y + 16 + 80 + bdy >= canvas.height || board5Y - 64 - 70  + bdy <= 0) {
@@ -191,6 +194,7 @@ function draw(){
     }
  
     else if(score>= 30  && Math.abs(bdy)<7){
+        level = 4;
         board3();
         board3Y += bdy;
         board4()
@@ -222,11 +226,12 @@ function draw(){
     }    
     else if(score>= 20  && Math.abs(bdy)<6){
         bdy = 6;
+        level = 3;
         
     }
     else if(score>= 10  && Math.abs(bdy)<3){
         bdy = 3;
-
+        level = 2;
     } 
 
 
